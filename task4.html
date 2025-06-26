@@ -4,7 +4,64 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>To-Do List</title>
-  <link rel="stylesheet" href="style.css"/>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  width: 70%;
+  padding: 8px;
+  margin-right: 5px;
+}
+
+button {
+  padding: 8px 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+li button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 8px;
+  cursor: pointer;
+}
+
+</style>
 </head>
 <body>
   <div class="container">
@@ -14,6 +71,28 @@
     <ul id="taskList"></ul>
   </div>
 
-  <script src="script.js"></script>
+  <script >
+    function addTask() {
+  const taskInput = document.getElementById("taskInput");
+  const taskList = document.getElementById("taskList");
+
+  if (taskInput.value.trim() === "") return;
+
+  const li = document.createElement("li");
+  li.textContent = taskInput.value;
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.onclick = function () {
+    taskList.removeChild(li);
+  };
+
+  li.appendChild(deleteBtn);
+  taskList.appendChild(li);
+
+  taskInput.value = "";
+}
+
+  </script>
 </body>
 </html>
